@@ -1,3 +1,4 @@
+// Gather facts (memory, cpus, filesystems, etc...) about the current machine.
 package facts
 
 import (
