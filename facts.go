@@ -12,39 +12,39 @@ import (
 )
 
 type Facts struct {
-	Hostname    string
-	Domain      string
-	Fqdn        string
-	Cpus        int
-	Os          string
-	Uptime      float64
-	Memory      uint64                // In megabytes
-	Swap        uint64                // In megabytes
-	Interfaces  map[string]Interface  // key is nic name ex: en0, eth0
-	FileSystems map[string]FileSystem // key is DeviceName
+	Hostname    string                `json:"hostname"`
+	Domain      string                `json:"domain"`
+	Fqdn        string                `json:"fqdn"`
+	Cpus        int                   `json:"cpus"`
+	Os          string                `json:"os"`
+	Uptime      float64               `json:"uptime"`
+	Memory      uint64                `json:"memory"`      // In megabytes
+	Swap        uint64                `json:"swap"`        // In megabytes
+	Interfaces  map[string]Interface  `json:"interfaces"`  // key is nic name ex: en0, eth0
+	FileSystems map[string]FileSystem `json:"filesystems"` // key is DeviceName
 }
 
 type Interface struct {
-	Index        int
-	MTU          int
-	Name         string
-	HardwareAddr string
-	Flags        []string
-	Addresses    []Address
+	Index        int       `json:"index"`
+	MTU          int       `json:"mtu"`
+	Name         string    `json:"name"`
+	HardwareAddr string    `json:"hardware_addr"`
+	Flags        []string  `json:"flags"`
+	Addresses    []Address `json:"addresses"`
 }
 
 type Address struct {
-	Network   string
-	Address   string
-	IPNetwork string
+	Network   string `json:"network"`
+	Address   string `json:"address"`
+	IPNetwork string `json:"ip_network"`
 }
 
 type FileSystem struct {
-	Directory  string
-	DeviceType string
-	SysType    string
-	Options    string
-	Size       uint64 // in megabytes
+	Directory  string `json:"directory"`
+	DeviceType string `json:"device_type"`
+	SysType    string `json:"sys_type"`
+	Options    string `json:"options"`
+	Size       uint64 `json:"size"` // in megabytes
 }
 
 // Gather all of the system facts available
