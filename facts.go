@@ -16,6 +16,7 @@ type Facts struct {
 	Domain      string                `json:"domain"`
 	Fqdn        string                `json:"fqdn"`
 	Cpus        int                   `json:"cpus"`
+	Arch        string                `json:"arch"`
 	Os          string                `json:"os"`
 	Uptime      float64               `json:"uptime"`
 	Memory      uint64                `json:"memory"`      // In megabytes
@@ -67,8 +68,8 @@ func FindFacts() *Facts {
 	}
 
 	f.Cpus = runtime.NumCPU()
-
 	f.Os = getOs()
+	f.Arch = getArch()
 
 	f.loadInterfaces()
 
