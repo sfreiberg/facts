@@ -12,17 +12,20 @@ import (
 )
 
 type Facts struct {
-	Hostname    string                `json:"hostname"`
-	Domain      string                `json:"domain"`
-	Fqdn        string                `json:"fqdn"`
-	Cpus        int                   `json:"cpus"`
-	Arch        string                `json:"arch"`
-	Os          string                `json:"os"`
-	Uptime      float64               `json:"uptime"`
-	Memory      uint64                `json:"memory"`      // In megabytes
-	Swap        uint64                `json:"swap"`        // In megabytes
-	Interfaces  map[string]Interface  `json:"interfaces"`  // key is nic name ex: en0, eth0
-	FileSystems map[string]FileSystem `json:"filesystems"` // key is DeviceName
+	Hostname         string                `json:"hostname"`
+	Domain           string                `json:"domain"`
+	Fqdn             string                `json:"fqdn"`
+	Cpus             int                   `json:"cpus"`
+	Arch             string                `json:"arch"`
+	Os               string                `json:"os"`
+	Platform         string                `json:"platform"`
+	PlatformVersion  string                `json:"platform_version"`
+	PlatformCodename string                `json:"platform_codename"`
+	Uptime           float64               `json:"uptime"`
+	Memory           uint64                `json:"memory"`      // In megabytes
+	Swap             uint64                `json:"swap"`        // In megabytes
+	Interfaces       map[string]Interface  `json:"interfaces"`  // key is nic name ex: en0, eth0
+	FileSystems      map[string]FileSystem `json:"filesystems"` // key is DeviceName
 }
 
 type Interface struct {
@@ -72,6 +75,7 @@ func FindFacts() *Facts {
 	f.Arch = getArch()
 
 	f.loadInterfaces()
+	f.loadPlatformInfo()
 
 	// sigar related items
 	f.loadUptime()
