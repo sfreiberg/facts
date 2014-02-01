@@ -15,4 +15,10 @@ func TestFacts(t *testing.T) {
 		panic(err)
 	}
 	fmt.Printf("%s\n", json)
+
+	yaml, err := f.ToYAML()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%s\n", yaml)
 }

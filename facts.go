@@ -3,6 +3,7 @@ package facts
 
 import (
 	"github.com/cloudfoundry/gosigar"
+	"launchpad.net/goyaml"
 
 	"encoding/json"
 	"net"
@@ -94,6 +95,11 @@ func (f *Facts) ToJson() ([]byte, error) {
 // Return facts as a JSON document with newlines and indentation added.
 func (f *Facts) ToPrettyJson() ([]byte, error) {
 	return json.MarshalIndent(f, "", "  ")
+}
+
+// Return facts as YAML
+func (f *Facts) ToYAML() ([]byte, error) {
+	return goyaml.Marshal(f)
 }
 
 func (f *Facts) loadInterfaces() {
