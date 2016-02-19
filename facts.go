@@ -3,7 +3,7 @@ package facts
 
 import (
 	"github.com/cloudfoundry/gosigar"
-	"launchpad.net/goyaml"
+	"gopkg.in/yaml.v2"
 
 	"encoding/json"
 	"net"
@@ -99,7 +99,7 @@ func (f *Facts) ToPrettyJson() ([]byte, error) {
 
 // Return facts as YAML
 func (f *Facts) ToYAML() ([]byte, error) {
-	return goyaml.Marshal(f)
+	return yaml.Marshal(f)
 }
 
 func (f *Facts) loadInterfaces() {
