@@ -3,7 +3,6 @@ package facts
 import (
 	"bytes"
 	"os/exec"
-	"strings"
 )
 
 func getOs() string {
@@ -41,30 +40,4 @@ func (f *Facts) loadPlatformInfo() error {
 	f.PlatformCodename = getOSXCodename(f.PlatformVersion)
 
 	return nil
-}
-
-func getOSXCodename(version string) string {
-	if strings.HasPrefix(version, "10.9") {
-		return "Cabernet"
-	} else if strings.HasPrefix(version, "10.8") {
-		return "Mountain Lion"
-	} else if strings.HasPrefix(version, "10.7") {
-		return "Lion"
-	} else if strings.HasPrefix(version, "10.6") {
-		return "Snow Leopard"
-	} else if strings.HasPrefix(version, "10.5") {
-		return "Leopard"
-	} else if strings.HasPrefix(version, "10.4") {
-		return "Tiger"
-	} else if strings.HasPrefix(version, "10.3") {
-		return "Panther"
-	} else if strings.HasPrefix(version, "10.2") {
-		return "Jaguar"
-	} else if strings.HasPrefix(version, "10.1") {
-		return "Puma"
-	} else if strings.HasPrefix(version, "10.0") {
-		return "Cheetah"
-	} else {
-		return "Unknown"
-	}
 }
